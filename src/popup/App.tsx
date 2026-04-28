@@ -24,8 +24,17 @@ export default function App() {
     addPrompt,
     updatePrompt,
     removePrompt,
+    renameGroup,
+    deleteGroup,
     filteredPrompts,
   } = usePrompts();
+
+  const handleDeleteGroup = useCallback(async (groupId: string) => {
+    await deleteGroup(groupId);
+    if (activeGroupId === groupId) {
+      setActiveGroupId(null);
+    }
+  }, [deleteGroup, activeGroupId]);
 
   const displayedPrompts = filteredPrompts(activeGroupId, keyword);
 
@@ -148,6 +157,8 @@ export default function App() {
         activeGroupId={activeGroupId}
         onSelect={setActiveGroupId}
         prompts={prompts}
+        onRenameGroup={renameGroup}
+        onDeleteGroup={handleDeleteGroup}
       />
 
       {/* Prompt List */}

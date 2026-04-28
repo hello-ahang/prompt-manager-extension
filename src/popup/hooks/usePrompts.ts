@@ -102,6 +102,29 @@ export function usePrompts() {
     [prompts],
   );
 
+  const renameGroup = useCallback(
+    async (groupId: string, newName: string) => {
+      const updated = groups.map((g) =>
+        g.id === groupId ? { ...g, name: newName } : g,
+      );
+      await saveGroups(updated);
+    },
+    [groups],
+  );
+
+  const deleteGroup = useCallback(
+    async (groupId: string) => {
+      await saveGroups(groups.filter((g) => g.id !== groupId));
+      // 将该分组下的提示词移入未分组
+      const allPrompts = await getPrompts();
+      const updated = allPrompts.map((p) =>
+        p.groupId === groupId ? { ...p, groupId: 'default' } : p,
+      );
+      await savePrompts(updated);
+    },
+    [groups],
+  );
+
   return {
     prompts,
     groups,
@@ -109,6 +132,8 @@ export function usePrompts() {
     addPrompt,
     updatePrompt,
     removePrompt,
+    renameGroup,
+    deleteGroup,
     filteredPrompts,
   };
 }
