@@ -69,6 +69,17 @@ npm run build
 5. 点击"加载已解压的扩展程序"，选择项目中的 `dist` 目录
 6. 浏览器工具栏出现插件图标即安装成功
 
+## 使用说明
+1. 加载完浏览器扩展程序后，点击 新增
+<img width="406" height="560" alt="image" src="https://github.com/user-attachments/assets/bc5f20da-6908-4690-9c1e-4ec98d8a9d7f" />
+2. 填写提示词信息
+<img width="384" height="511" alt="image" src="https://github.com/user-attachments/assets/6cb2651f-cead-491b-a2bd-dbd48810111b" />
+3. 点入 AI 对话框后，再点击插件里的 prompt
+<img width="1049" height="605" alt="image" src="https://github.com/user-attachments/assets/eed233cc-636d-4966-ad16-93e03011c60b" />
+4. 完成prompt 注入到对话框里
+<img width="956" height="671" alt="image" src="https://github.com/user-attachments/assets/8ea9b974-bf4c-4d77-ba23-c96ec7ca6a60" />
+
+
 ## 数据说明
 
 **所有提示词数据仅存储在浏览器本地**（`chrome.storage.local`），不会上传到任何服务器，也不会写入项目文件中。卸载插件或清除浏览器数据会导致数据丢失，建议定期导出备份。
